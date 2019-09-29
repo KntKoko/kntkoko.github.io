@@ -18,6 +18,14 @@ var blocker = anime.timeline({
 	autoplay: false
 });
 
+var black = anime.timeline({
+	autoplay: false
+});
+
+var body = anime.timeline({
+	autoplay: false
+});
+
 logo
 .add({
 	targets: '.logo',
@@ -121,6 +129,42 @@ blocker
   height: 0,
 }, 6000)
 
+black
+.add({
+	targets: '#black',
+  duration: 0,
+  background: 'rgba(0,0,0,1)',
+  width: '100%',
+  height: '100%',
+}, 0)
+.add({
+  targets: '#black',
+  duration: 2000,
+  background: 'rgba(0,0,0,0)',
+  width: '100%',
+  height: '100%',
+}, 3000)
+.add({
+  targets: '#black',
+  duration: 1,
+  width: 0,
+  height: 0,
+}, 5000)
+
+body
+.add({
+	targets: 'body',
+  update: function() {
+		$('body').css('overflow', 'hidden');
+  }
+}, 0)
+.add({
+  targets: 'body',
+  update: function() {
+		$('body').css('overflow', 'visible');
+  }
+}, 6000)
+
 /*
  var bouncingBall = anime({
       targets: '.logo',
@@ -140,4 +184,6 @@ $(document).ready(function() {
     nav_a.play();
     content.play();
     blocker.play();
+	black.play();
+	body.play();
 });

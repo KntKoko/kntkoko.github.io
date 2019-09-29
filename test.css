@@ -1,8 +1,17 @@
 body {
 	background-image: url('./bg.png');
+	background-attachment: fixed;
 	position: relative;
 	width: 100%;
 	height: 100%;
+}
+
+#black {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: -999;
+	background: rgba(0,0,0,1);
 }
 
 #blocker {
@@ -75,7 +84,7 @@ body {
 }
 
 .nav:first-letter, .nav_active:first-letter {
-	color: rgb(233,22,161);
+	color: rgb(22,166,233);
 }
 
 .nav:hover {
@@ -85,14 +94,14 @@ body {
 .nav_active, .nav_active:hover {
 	color: white;
 	opacity: 1;
-	background-image: linear-gradient(rgba(233,22,161,.5), rgba(233,22,161,0));
+	background-image: linear-gradient(rgba(22,166,233,.5), rgba(22,166,233,0));
 	width: 180px;
 	height: 50px;
 	display: inline-block;
 	line-height: 50px;
 	text-align: center;
-	border: 1px solid rgba(233,22,161,.75);
-	border-top: 2px solid rgba(233,22,161,.75);
+	border: 1px solid rgba(22,166,233,.75);
+	border-top: 2px solid rgba(22,166,233,.75);
 	border-bottom: 0;
 	border-radius: 20px;
 	text-decoration: none;
@@ -101,4 +110,64 @@ body {
 	margin-left: 10px;
 	margin-right: 10px;
 	position: relative;
+}
+
+.uneven + .uneven {
+	margin-top: -30px;
+}
+
+#content > div > svg {
+	display: inline-block;
+	margin-left: -40px;
+	margin-right: -45px;
+	position: relative;
+}
+
+@keyframes btop {
+  from { stroke: #18b5ff; }
+  to { stroke: #fa1bb2; }
+}
+
+@keyframes ptob {
+  from { stroke: #fa1bb2; }
+  to { stroke: #18b5ff; }
+}
+
+#content > div > svg > polygon {
+	transform: translate(10px, 0) scale(.9);
+	stroke: red;
+	stroke-width: 10px;
+	opacity: .5;
+}
+
+#content > div > svg > polygon:hover {
+	opacity: 1;
+}
+
+#content > div:nth-child(2n) > svg > polygon {
+	stroke: #18b5ff;
+	animation-name: btop;
+	animation-duration: 4s;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+	transition-timing-function: linear;
+	animation-delay: -1s;
+}
+
+#content > div:nth-child(2n+1) > svg > polygon {
+	stroke: #fa1bb2;
+	animation-name: ptob;
+	animation-duration: 4s;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+	transition-timing-function: linear;
+	animation-delay: -1s;
+}
+
+#content > div > svg:nth-child(2n) {
+	top: 125px;
+}
+
+.hex {
+  fill: url(#image);
 }
